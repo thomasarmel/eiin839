@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "EchoServer": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "HTTP_ROOT": "C:\\Users\\thoma\\Documents\\travail\\polytech\\SI4\\soc\\tds\\TD1\\Echo\\www"
+      }
+    }
+  }
+}

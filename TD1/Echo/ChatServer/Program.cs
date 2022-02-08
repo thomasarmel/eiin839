@@ -23,6 +23,7 @@ namespace Echo
             ServerSocket.Start();
 
             Console.WriteLine("Server started.");
+            Console.WriteLine(Environment.GetEnvironmentVariable("HTTP_ROOT"));
             while (true)
             {
                 TcpClient clientSocket = ServerSocket.AcceptTcpClient();
@@ -44,21 +45,39 @@ namespace Echo
             ctThread.Start();
         }
 
-
+        static Encoding enc = Encoding.UTF8;
 
         private void Echo()
         {
             NetworkStream stream = clientSocket.GetStream();
-            BinaryReader reader = new BinaryReader(stream);
-            BinaryWriter writer = new BinaryWriter(stream);
-
-            while (true)
+            MemoryStream memoryStream = new MemoryStream();
+            byte[] data = new byte[1000];
+            int size;
+            do
             {
-
-                string str = reader.ReadString();
-                Console.WriteLine(str);
-                writer.Write(str);
+                size = stream.Read(data, 0, data.Length);
+                if (size == 0)
+                {
+                    Console.WriteLine("client disconnected...");
+                    return;
+                }
+                memoryStream.Write(data, 0, size);
+            } while (stream.DataAvailable);
+            string request = enc.GetString(memoryStream.ToArray());
+            using var reader = new StringReader(request);
+            string first = reader.ReadLine();
+            string path = first.Substring(4, first.Length - 13);
+            string fullPath = Environment.GetEnvironmentVariable("HTTP_ROOT") + "\\" + path;
+            if(!File.Exists(fullPath))
+            {
+                stream.Close();
+                return;
             }
+            string fileContent = File.ReadAllText(fullPath);
+            string httpHeader = "HTTP / 1.1 200 OK\nContent - Length: " + fileContent.Length + "\nContent - Type: text / html\nConnection: Close\n\n" + fileContent;
+            stream.Write(enc.GetBytes(httpHeader));
+            stream.Close();
+            Console.WriteLine(request);
         }
 
 
