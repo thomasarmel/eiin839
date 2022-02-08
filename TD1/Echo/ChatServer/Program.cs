@@ -74,6 +74,7 @@ namespace Echo
                 return;
             }
             string fileContent = File.ReadAllText(fullPath);
+            System.Net.HttpRequestHeader
             string httpHeader = "HTTP / 1.1 200 OK\nContent - Length: " + fileContent.Length + "\nContent - Type: text / html\nConnection: Close\n\n" + fileContent;
             stream.Write(enc.GetBytes(httpHeader));
             stream.Close();

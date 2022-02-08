@@ -67,6 +67,10 @@ namespace BasicServerHTTPlistener
                 }
                 Console.WriteLine($"Received request for {request.Url}");
                 Console.WriteLine(documentContents);
+                foreach(string h in request.Headers)
+                {
+                    Console.WriteLine($"{h} = {request.Headers[h]}");
+                }
 
                 // Obtain a response object.
                 HttpListenerResponse response = context.Response;
