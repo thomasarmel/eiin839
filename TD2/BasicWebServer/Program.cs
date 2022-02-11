@@ -147,6 +147,21 @@ namespace BasicServerHTTPlistener
             return "<html><body>Hello " + param1 + " et " + param2 + "</body></html>";
         }
 
+        public string incr(string param1, string param2)
+        {
+            string r = "";
+            try
+            {
+                r = "" + (Int32.Parse(param1) + 1);
+            }
+            catch (Exception)
+            {
+                r = "0";
+            }
+
+            return r;
+        }
+
         public string ping(string param1, string param2)
         {
             ProcessStartInfo start = new ProcessStartInfo();
