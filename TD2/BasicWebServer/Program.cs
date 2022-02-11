@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -144,6 +145,32 @@ namespace BasicServerHTTPlistener
         {
             Console.WriteLine("Call MyMethod 1");
             return "<html><body>Hello " + param1 + " et " + param2 + "</body></html>";
+        }
+
+        public string ping(string param1, string param2)
+        {
+            ProcessStartInfo start = new ProcessStartInfo();
+            start.FileName = @"C:\windows\system32\ping.exe"; // Specify exe name.
+            start.Arguments = "-n 1 " + param1; // Specify arguments.
+            start.UseShellExecute = false; 
+            start.RedirectStandardOutput = true;
+            //
+            // Start the process.
+            //
+            string r = "";
+            using (Process process = Process.Start(start))
+            {
+                //
+                // Read in all the text from the process with the StreamReader.
+                //
+                
+                using (StreamReader reader = process.StandardOutput)
+                {
+                    r += reader.ReadToEnd();
+                }
+            }
+
+            return r;
         }
     }
 }
