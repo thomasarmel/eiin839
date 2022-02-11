@@ -4,6 +4,9 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Web;
+using System.Linq;
+using System.Reflection;
+using System.Threading.Tasks;
 
 namespace BasicServerHTTPlistener
 {
@@ -86,19 +89,23 @@ namespace BasicServerHTTPlistener
                 //get path in url 
                 Console.WriteLine(request.Url.LocalPath);
 
-                // parse path in url 
+                // parse path in url
+                string seg = "";
                 foreach (string str in request.Url.Segments)
                 {
-                    Console.WriteLine(str);
+                    Console.WriteLine("segment: "+ str);
+                    seg = str;
                 }
 
                 //get params un url. After ? and between &
 
                 Console.WriteLine(request.Url.Query);
 
+                string param1 = HttpUtility.ParseQueryString(request.Url.Query).Get("param1");
+                string param2 = HttpUtility.ParseQueryString(request.Url.Query).Get("param2");
                 //parse params in url
-                Console.WriteLine("param1 = " + HttpUtility.ParseQueryString(request.Url.Query).Get("param1"));
-                Console.WriteLine("param2 = " + HttpUtility.ParseQueryString(request.Url.Query).Get("param2"));
+                Console.WriteLine("param1 = " + param1);
+                Console.WriteLine("param2 = " + param2);
                 Console.WriteLine("param3 = " + HttpUtility.ParseQueryString(request.Url.Query).Get("param3"));
                 Console.WriteLine("param4 = " + HttpUtility.ParseQueryString(request.Url.Query).Get("param4"));
 
@@ -109,7 +116,15 @@ namespace BasicServerHTTPlistener
                 HttpListenerResponse response = context.Response;
 
                 // Construct a response.
+                Type type = typeof(MyReflectionClass);
+                MethodInfo method = type.GetMethod(seg);
                 string responseString = "<HTML><BODY> Hello world!</BODY></HTML>";
+                if (method != null)
+                {
+                    MyReflectionClass c = new MyReflectionClass();
+                    responseString = (string)method.Invoke(c, new object[] { param1, param2 });
+                }
+
                 byte[] buffer = System.Text.Encoding.UTF8.GetBytes(responseString);
                 // Get a response stream and write the response to it.
                 response.ContentLength64 = buffer.Length;
@@ -120,6 +135,15 @@ namespace BasicServerHTTPlistener
             }
             // Httplistener neither stop ... But Ctrl-C do that ...
             // listener.Stop();
+        }
+    }
+
+    public class MyReflectionClass
+    {
+        public string MyMethod(string param1, string param2)
+        {
+            Console.WriteLine("Call MyMethod 1");
+            return "<html><body>Hello " + param1 + " et " + param2 + "</body></html>";
         }
     }
 }
