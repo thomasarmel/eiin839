@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>JCDecaux API client</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+    <div>
+        <label for="apiKey">cl&eacute; d'API:</label>
+        <input name="apiKeyInput" id="apiKey">
+    </div>
+
+    <div>
+        <h3>Rechercher un contrat JCDecaux</h>
+        <button onclick="retrieveAllContracts();">Rechercher mon contrat</button>
+    </div>
+
+    <div id="chooseContractDiv" class="hiddenstep">
+        <h3>Trouver toutes les stations du contrat</h3>
+        <label for="chosenContract">Contrat:</label>
+        <input list="contractsList" name="contractInput" id="chosenContract">
+        <datalist id="contractsList"></datalist>
+        <button id="retrieveStationsButton" onclick="retrieveContractStations();">Chercher les stations</button>
+    </div>
+
+    <div id="chooseStationDiv" class="hiddenstep">
+        <h3>Trouver la station de plus proche de la station actuelle</h3>
+        <input name="latitude" id="latitude">
+        <label for="latitude">Latitude:</label>
+        
+        <input name="longitude" id="longitude">
+        <label for="longitude">Longitude:</label>
+        <button onclick="findClosestStation();">Trouver !</button>
+    </div>
+
+    <div id="foundStationDiv" class="hiddenstep">
+        <h2>Station la plus proche: <span id="foundStation"></span></h2>
+    </div>
+
+    <script type="text/javascript" src="main.js"></script>
+</body>
+</html>
