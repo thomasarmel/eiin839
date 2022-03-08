@@ -1,5 +1,4 @@
-﻿using System.Device.Location;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Text.Json.Nodes;
 
 namespace MyApp // Note: actual namespace depends on the project name.
@@ -10,12 +9,11 @@ namespace MyApp // Note: actual namespace depends on the project name.
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
             
-            if (args.Length < 3)
+            if (args.Length < 1)
             {
-                Console.WriteLine("3 args");
+                Console.WriteLine("1 args");
                 return;
             }
-            GeoCoordinate cliGPS = new GeoCoordinate(Double.Parse(args[1]), Double.Parse(args[2]));
             HttpClient client = new HttpClient();
             try
             {
@@ -25,20 +23,10 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 string responseBody = await response.Content.ReadAsStringAsync();
                 JsonNode json = JsonValue.Parse(responseBody);
                 JsonArray jsonArray = json.AsArray();
-                double minDistance = 100000000;
-                string closerStation = "";
                 for (int i = 0; i < jsonArray.Count; i++)
                 {
-                    GeoCoordinate currentGPS = new GeoCoordinate(jsonArray[i]["position"]["latitude"].GetValue<Double>(),
-                        jsonArray[i]["position"]["longitude"].GetValue<Double>());
-                    double d = currentGPS.GetDistanceTo(cliGPS);
-                    if (d < minDistance)
-                    {
-                        minDistance = d;
-                        closerStation = jsonArray[i]["name"].GetValue<string>();
-                    }
+                    Console.WriteLine(jsonArray[i]["name"]);
                 }
-                Console.WriteLine("Closer Station: " + closerStation);
             }
             catch (HttpRequestException e)
             {
