@@ -31,7 +31,7 @@ Web Front-End and UI Web Services Client: TD5
 
 SOAP: TD4
 
-Library: MathServiceLibrary http://localhost:8733/Design_Time_Addresses/WcfServiceLibrary/Service1/
+Library: MathServiceLibrary http://localhost:8733/Design_Time_Addresses/MathServiceLibrary/Service1/
 
 REST: TD6
 
