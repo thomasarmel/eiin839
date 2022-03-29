@@ -24,9 +24,11 @@ TD2
 ### Session 1 : Web Service Clients (REST/SOAP)
 
 Mon premier client REST avec données au format JSON: TD3
+
 Web Front-End and UI Web Services Client: TD5
 
 ### Session 2 : REST and SOAP Web Services
 
 SOAP: TD4
+
 REST: TD6
