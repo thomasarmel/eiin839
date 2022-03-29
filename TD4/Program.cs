@@ -1,4 +1,4 @@
-﻿using ServiceReference1;
+﻿using MathServiceReference;
 
-var client = new ServiceReference1.CalculatorSoapClient(CalculatorSoapClient.EndpointConfiguration.CalculatorSoap);
-Console.WriteLine(await client.ChannelFactory.CreateChannel().AddAsync(2, 5));
+var client = new MathServiceReference.Service1Client(Service1Client.EndpointConfiguration.BasicHttpBinding_IService1);
+Console.WriteLine(client.ChannelFactory.CreateChannel().add(2, 5));

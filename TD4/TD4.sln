@@ -1,6 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TD4", "TD4.csproj", "{DB966B49-6C50-4AE3-BC4A-505A636A4874}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32319.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TD4", "TD4.csproj", "{DB966B49-6C50-4AE3-BC4A-505A636A4874}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathServiceLibrary", "MathServiceLibrary\MathServiceLibrary.csproj", "{660BF23F-CC80-491E-A368-B914E4351F72}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +17,15 @@ Global
 		{DB966B49-6C50-4AE3-BC4A-505A636A4874}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB966B49-6C50-4AE3-BC4A-505A636A4874}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB966B49-6C50-4AE3-BC4A-505A636A4874}.Release|Any CPU.Build.0 = Release|Any CPU
+		{660BF23F-CC80-491E-A368-B914E4351F72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{660BF23F-CC80-491E-A368-B914E4351F72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{660BF23F-CC80-491E-A368-B914E4351F72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{660BF23F-CC80-491E-A368-B914E4351F72}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0504B37C-B23B-4EC5-ACB3-6ADD39595BD7}
 	EndGlobalSection
 EndGlobal

@@ -10,22 +10,24 @@ namespace WcfServiceLibrary
     // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom de classe "Service1" à la fois dans le code et le fichier de configuration.
     public class Service1 : IService1
     {
-        public string GetData(int value)
+        int IService1.add(int a, int b)
         {
-            return string.Format("You entered: {0}", value);
+            return a + b;
         }
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        int IService1.div(int a, int b)
         {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
+            return a / b;
+        }
+
+        int IService1.mul(int a, int b)
+        {
+            return a * b;
+        }
+
+        int IService1.sub(int a, int b)
+        {
+            return a - b;
         }
     }
 }
