@@ -42,5 +42,15 @@ namespace MathsLibrary
         {
             return a - b;
         }
+
+        int IMathsOperations.SubtractBis(int a, int b)
+        {
+            return a - b;
+        }
+
+        int IMathsOperations.SubtractTris(int a, int b)
+        {
+            return a - b;
+        }
     }
 }

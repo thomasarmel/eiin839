@@ -27,7 +27,13 @@ namespace MathsLibrary
         [WebInvoke(UriTemplate = "Subtract?a={a}&b={b}", Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
         int Subtract(int a, int b);
 
-        // TODO: ajoutez vos opérations de service ici
+        [OperationContract]
+        [WebInvoke(UriTemplate = "SubtractBis?a={a}&b={b}", Method = "GET", ResponseFormat = WebMessageFormat.Xml, BodyStyle = WebMessageBodyStyle.Bare)]
+        int SubtractBis(int a, int b);
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "SubtractTris", Method = "POST", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+        int SubtractTris(int a, int b);
     }
 
     // Utilisez un contrat de données comme indiqué dans l'exemple ci-après pour ajouter les types composites aux opérations de service.
