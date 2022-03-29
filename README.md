@@ -7,3 +7,26 @@ To use this repository as a base for your project, fork it (there is a button fo
 You are also strongly advised to watch the repo (another button on the top-right corner) to be updated when modifications are pushed to it.
 
 Note : If you need help forking or syncing your fork with the main repository, you can follow [this procedure](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo).
+
+
+## PART I
+
+### Session 1 : HTTP Protocol and static web server
+
+TD1
+
+### Session 2 : HTTP Protocol and Dynamic Web Server
+
+TD2
+
+## PART II
+
+### Session 1 : Web Service Clients (REST/SOAP)
+
+Mon premier client REST avec données au format JSON: TD3
+Web Front-End and UI Web Services Client: TD5
+
+### Session 2 : REST and SOAP Web Services
+
+SOAP: TD4
+REST: TD6
