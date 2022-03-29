@@ -31,4 +31,8 @@ Web Front-End and UI Web Services Client: TD5
 
 SOAP: TD4
 
+Library: MathSOAPLibrary http://localhost:8733/Design_Time_Addresses/WcfServiceLibrary/Service1/
+
 REST: TD6
+
+http://localhost:8733/Design_Time_Addresses/MathsLibrary/MathsOperations/ Add?a={a}&b={b} | Multiply?a={a}&b={b} | Subtract?a={a}&b={b} | SubtractBis?a={a}&b={b} | SubtractTris (POST)
